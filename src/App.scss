@@ -105,6 +105,27 @@
     }
   }
   .content {
+    .page-selection {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      span {
+        font-size: 25px;
+        a {
+          color: #111;
+          text-decoration: none;
+          &:hover {
+            color: #09b1ba;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+      .active {
+        color: #09b1ba;
+        text-decoration: underline;
+      }
+    }
     .card-wrapper {
       width: 1280px;
       display: flex;
