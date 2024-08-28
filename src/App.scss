@@ -1,0 +1,258 @@
+#root {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1280px;
+    margin: auto;
+    padding: 10px 0;
+    img {
+      height: 30px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .search {
+      input {
+        width: 590px;
+        padding-left: 40px;
+        background-color: #f5f6f7;
+        border-radius: 5px;
+        height: 37px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+      }
+    }
+    button {
+      height: 30px;
+      width: 115px;
+      border: 1px solid #2cb1ba;
+      border-radius: 5px;
+      font-family: Maison Neue;
+      font-size: 12px;
+      outline: none;
+    }
+    .connect {
+      button {
+        background-color: #fff;
+        color: #2cb1ba;
+        &:hover {
+          color: #fff;
+          background-color: #2cb1ba;
+          cursor: pointer;
+        }
+        &:first-child {
+          margin-right: 20px;
+        }
+      }
+    }
+    .sold {
+      background-color: #2cb1ba;
+      color: #fff;
+      &:hover {
+        color: #2cb1ba;
+        background-color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+  .hero {
+    background-image: url(/src/assets/hero.jpg);
+    height: 455px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    .container {
+      width: 1280px;
+      margin: auto;
+      img {
+        position: absolute;
+        bottom: 0;
+      }
+      div {
+        height: 220px;
+        width: 360px;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 3px;
+        font-size: 34px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        top: 75px;
+        box-shadow: 0 0 2px #1111113d;
+        button {
+          height: 45px;
+          width: 187px;
+          background-color: #2baeb7;
+          border-radius: 4px;
+          color: #fff;
+          font-size: 16px;
+          border: none;
+          padding: 0 14px;
+          margin-top: 32px;
+          &:hover {
+            color: #2baeb7;
+            background-color: #fff;
+            border: solid 1px #2baeb7;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .content {
+    .card-wrapper {
+      width: 1280px;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 30px auto auto;
+      .card-container {
+        width: 235px;
+        margin: 0 6px 16px;
+        cursor: pointer;
+        .card-user {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          img {
+            height: 25px;
+            width: 25px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+          }
+          span {
+            color: #999;
+            font-size: 12px;
+          }
+        }
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+        .card-product {
+          img {
+            height: 360px;
+            width: 235px;
+            object-fit: cover;
+          }
+          .card-infos {
+            display: flex;
+            flex-direction: column;
+            padding: 8px;
+            span:first-child {
+              font-size: 14px;
+            }
+            span:not(:first-child) {
+              font-size: 12px;
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+  }
+  .body {
+    min-height: calc(100vh - 60px);
+    background-color: #ebedee;
+    main {
+      .container {
+        width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        padding: 30px;
+        gap: 30px;
+        .offer-pictures {
+          width: 400px;
+          height: 600px;
+          img {
+            width: 400px;
+            height: 600px;
+            object-fit: cover;
+          }
+        }
+        .offer-infos {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          background-color: #fff;
+          width: 400px;
+          padding: 40px;
+          .offer-details {
+            padding-bottom: 40px;
+            border-bottom: solid 1px rgba(17, 17, 17, 0.1);
+            span {
+              font-size: 24px;
+              line-height: 32px;
+              color: #111;
+            }
+            ul {
+              margin-top: 15px;
+              list-style-type: none;
+              padding: 0;
+              li {
+                display: flex;
+                padding: 2px 0;
+                span {
+                  flex: 1;
+                  font-size: 14px;
+                  text-transform: uppercase;
+                  line-height: 17px;
+                  &:nth-child(odd) {
+                    color: #999;
+                  }
+                  &:nth-child(even) {
+                    color: #666;
+                    font-weight: 700;
+                  }
+                }
+              }
+            }
+          }
+          .offer-content {
+            .offer-title {
+              font-weight: 700;
+              margin: 16px 0;
+            }
+            .offer-description {
+              color: #666;
+              margin: 16px 0;
+            }
+            .user {
+              display: flex;
+              align-items: center;
+              img {
+                height: 50px;
+                width: 50px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-right: 10px;
+              }
+            }
+          }
+          button {
+            color: #fff;
+            background-color: #09b1ba;
+            border: solid 1px #09b1ba;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+            height: 36px;
+            padding: 0 16px;
+            line-height: 36px;
+            margin-top: 32px;
+            &:hover {
+              background-color: #0a98a0;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
