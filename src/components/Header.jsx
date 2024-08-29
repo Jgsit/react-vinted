@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import Cookies from "js-cookie";
 
-function Header() {
+function Header(props) {
+  const { token, setToken } = props;
   return (
     <header>
       <div>
@@ -12,10 +14,28 @@ function Header() {
       <div className="search">
         <input type="text" placeholder="Recherche des articles" />
       </div>
-      <div className="connect">
-        <button>S'inscrire</button>
-        <button>Se connecter</button>
-      </div>
+      {token ? (
+        <div className="connected">
+          <button
+            onClick={() => {
+              setToken(null);
+              Cookies.remove("token");
+            }}
+          >
+            Se deconnecter
+          </button>
+        </div>
+      ) : (
+        <div className="connect">
+          <Link to="/signup">
+            <button>S'inscrire</button>
+          </Link>
+          <Link to="/login">
+            <button>Se connecter</button>
+          </Link>
+        </div>
+      )}
+
       <button className="sold">Vends tes articles</button>
     </header>
   );

@@ -49,6 +49,21 @@
         }
       }
     }
+    .connected {
+      button {
+        background-color: #c2175b;
+        color: #fff;
+        border: 1px solid #c2175b;
+        &:hover {
+          color: #c2175b;
+          background-color: #fff;
+          cursor: pointer;
+        }
+        &:first-child {
+          margin-right: 20px;
+        }
+      }
+    }
     .sold {
       background-color: #2cb1ba;
       color: #fff;
@@ -278,6 +293,137 @@
             }
           }
         }
+      }
+    }
+  }
+  .signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 275px;
+      margin: auto;
+      text-align: center;
+      label {
+        font-size: 24px;
+        margin: 20px 0;
+      }
+      input {
+        width: 100%;
+        &.text {
+          padding: 5px 10px;
+          outline: none;
+          border: none;
+          border-bottom: 1px solid #fcced3;
+          height: 35px;
+          margin-bottom: 20px;
+          &::placeholder {
+            color: #cbcccd;
+            font-size: 16px;
+          }
+        }
+        &[type="submit"] {
+          background-color: #2cb1ba;
+          height: 45px;
+          width: 100%;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 16px;
+          margin-top: 20px;
+          &:hover {
+            color: #2cb1ba;
+            background-color: #fff;
+            border: 1px solid #2cb1ba;
+            cursor: pointer;
+          }
+        }
+      }
+      .error {
+        color: #c2175b;
+        font-size: 14px;
+      }
+      .checkbox {
+        margin-top: 20px;
+        padding: 10px;
+        div {
+          display: flex;
+          input {
+            margin: 0;
+            margin-right: 20px;
+            flex: 1;
+          }
+          span {
+            color: #666;
+            flex: 10;
+          }
+        }
+        p {
+          margin-top: 15px;
+          text-align: left;
+          color: #999;
+          font-size: 12px;
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      margin-top: 20px;
+      color: #2cb1ba;
+      font-size: 12px;
+    }
+  }
+  .login {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 275px;
+      margin: auto;
+      text-align: center;
+      label {
+        font-size: 24px;
+        margin: 20px 0;
+      }
+      input {
+        width: 100%;
+        &.text {
+          padding: 5px 10px;
+          outline: none;
+          border: none;
+          border-bottom: 1px solid #fcced3;
+          height: 35px;
+          margin-bottom: 20px;
+          &::placeholder {
+            color: #cbcccd;
+            font-size: 16px;
+          }
+        }
+        &[type="submit"] {
+          background-color: #2cb1ba;
+          height: 45px;
+          width: 100%;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 16px;
+          margin-top: 20px;
+          &:hover {
+            color: #2cb1ba;
+            background-color: #fff;
+            border: 1px solid #2cb1ba;
+            cursor: pointer;
+          }
+        }
+      }
+      .error {
+        color: #c2175b;
+        font-size: 14px;
       }
     }
   }
