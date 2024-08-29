@@ -20,7 +20,12 @@ function Card(props) {
         <div className="card-product">
           <img src={offer.product_image.secure_url} alt="" />
           <div className="card-infos">
-            <span>{offer.product_price} €</span>
+            <span>
+              {Intl.NumberFormat("de-DE", {
+                style: "currency",
+                currency: "EUR",
+              }).format(offer.product_price)}
+            </span>
             <span>{offer.product_details[1].TAILLE}</span>
             <span>{offer.product_details[0].MARQUE}</span>
           </div>

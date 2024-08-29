@@ -1,4 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 #root {
+  font-family: "Roboto", system-ui;
   header {
     display: flex;
     justify-content: space-between;
@@ -134,7 +136,6 @@
       .card-container {
         width: 235px;
         margin: 0 6px 16px;
-        cursor: pointer;
         .card-user {
           display: flex;
           align-items: center;
@@ -173,6 +174,10 @@
               color: #999;
             }
           }
+        }
+        &:hover {
+          box-shadow: 0 0 5px #1111113d;
+          cursor: pointer;
         }
       }
     }

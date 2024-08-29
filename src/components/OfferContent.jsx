@@ -11,7 +11,12 @@ function OfferContent(props) {
         </div>
         <div className="offer-infos">
           <div className="offer-details">
-            <span className="offer-price">{data.product_price} €</span>
+            <span className="offer-price">
+              {Intl.NumberFormat("de-DE", {
+                style: "currency",
+                currency: "EUR",
+              }).format(data.product_price)}
+            </span>
             <OfferInfo data={data.product_details} />
           </div>
           <div className="offer-content">
