@@ -6,7 +6,7 @@ function PageSelection(props) {
   const { page, limit, pageMax } = props;
   return (
     <div className="page-selection">
-      {page !== "1" && (
+      {Number(page) !== 1 && (
         <>
           <span>
             <Link to={`/?page=${1}&limit=${limit}`}>

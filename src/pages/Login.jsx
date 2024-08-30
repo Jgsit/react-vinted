@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IoIosClose } from "react-icons/io";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 function Signup(props) {
-  const { token, setToken } = props;
+  const { token, setToken, setVisible } = props;
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -34,8 +35,24 @@ function Signup(props) {
     }
   };
   return (
-    <main>
-      <div className="login">
+    <div
+      className="modal-root"
+      onClick={() => {
+        setVisible([false, false]);
+      }}
+    >
+      <div
+        className="login"
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
+      >
+        <IoIosClose
+          className="close"
+          onClick={() => {
+            setVisible([false, false]);
+          }}
+        />
         <form onSubmit={handleSubmit}>
           <label htmlFor="login">Se connecter</label>
           <input
@@ -60,7 +77,7 @@ function Signup(props) {
           <input type="submit" value="S'inscrire" />
         </form>
       </div>
-    </main>
+    </div>
   );
 }
 export default Signup;

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 #root {
+  position: relative;
   font-family: "Roboto", system-ui;
   header {
     display: flex;
@@ -84,9 +85,10 @@
     .container {
       width: 1280px;
       margin: auto;
-      img {
+      svg {
         position: absolute;
         bottom: 0;
+        color: #fff;
       }
       div {
         height: 220px;
@@ -296,134 +298,166 @@
       }
     }
   }
-  .signup {
+  .modal-root {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    form {
+    background-color: rgba(0, 0, 0, 0.5);
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 35px;
+      &:hover {
+        color: red;
+        cursor: pointer;
+      }
+    }
+    .signup {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 275px;
-      margin: auto;
-      text-align: center;
-      label {
-        font-size: 24px;
-        margin: 20px 0;
-      }
-      input {
-        width: 100%;
-        &.text {
-          padding: 5px 10px;
-          outline: none;
-          border: none;
-          border-bottom: 1px solid #fcced3;
-          height: 35px;
-          margin-bottom: 20px;
-          &::placeholder {
-            color: #cbcccd;
-            font-size: 16px;
-          }
+      position: relative;
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 275px;
+        margin: auto;
+        text-align: center;
+        label {
+          font-size: 24px;
+          margin: 20px 0;
         }
-        &[type="submit"] {
-          background-color: #2cb1ba;
-          height: 45px;
+        input {
           width: 100%;
-          border: none;
-          outline: none;
-          border-radius: 5px;
-          color: #fff;
-          font-size: 16px;
+          &.text {
+            padding: 5px 10px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #fcced3;
+            height: 35px;
+            margin-bottom: 20px;
+            &::placeholder {
+              color: #cbcccd;
+              font-size: 16px;
+            }
+          }
+          &[type="submit"] {
+            background-color: #2cb1ba;
+            height: 45px;
+            width: 100%;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            margin-top: 20px;
+            &:hover {
+              color: #2cb1ba;
+              background-color: #fff;
+              border: 1px solid #2cb1ba;
+              cursor: pointer;
+            }
+          }
+        }
+        .error {
+          color: #c2175b;
+          font-size: 14px;
+        }
+        .checkbox {
           margin-top: 20px;
-          &:hover {
-            color: #2cb1ba;
-            background-color: #fff;
-            border: 1px solid #2cb1ba;
-            cursor: pointer;
+          padding: 10px;
+          div {
+            display: flex;
+            input {
+              margin: 0;
+              margin-right: 20px;
+              flex: 1;
+            }
+            span {
+              color: #666;
+              flex: 10;
+            }
+          }
+          p {
+            margin-top: 15px;
+            text-align: left;
+            color: #999;
+            font-size: 12px;
           }
         }
       }
-      .error {
-        color: #c2175b;
-        font-size: 14px;
-      }
-      .checkbox {
+      a {
+        text-decoration: none;
         margin-top: 20px;
-        padding: 10px;
-        div {
-          display: flex;
-          input {
-            margin: 0;
-            margin-right: 20px;
-            flex: 1;
-          }
-          span {
-            color: #666;
-            flex: 10;
-          }
-        }
-        p {
-          margin-top: 15px;
-          text-align: left;
-          color: #999;
-          font-size: 12px;
-        }
+        color: #2cb1ba;
+        font-size: 12px;
       }
     }
-    a {
-      text-decoration: none;
-      margin-top: 20px;
-      color: #2cb1ba;
-      font-size: 12px;
-    }
-  }
-  .login {
-    form {
+    .login {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 275px;
-      margin: auto;
-      text-align: center;
-      label {
-        font-size: 24px;
-        margin: 20px 0;
-      }
-      input {
-        width: 100%;
-        &.text {
-          padding: 5px 10px;
-          outline: none;
-          border: none;
-          border-bottom: 1px solid #fcced3;
-          height: 35px;
-          margin-bottom: 20px;
-          &::placeholder {
-            color: #cbcccd;
-            font-size: 16px;
-          }
+      position: relative;
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 275px;
+        margin: auto;
+        text-align: center;
+        label {
+          font-size: 24px;
+          margin: 20px 0;
         }
-        &[type="submit"] {
-          background-color: #2cb1ba;
-          height: 45px;
+        input {
           width: 100%;
-          border: none;
-          outline: none;
-          border-radius: 5px;
-          color: #fff;
-          font-size: 16px;
-          margin-top: 20px;
-          &:hover {
-            color: #2cb1ba;
-            background-color: #fff;
-            border: 1px solid #2cb1ba;
-            cursor: pointer;
+          &.text {
+            padding: 5px 10px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #fcced3;
+            height: 35px;
+            margin-bottom: 20px;
+            &::placeholder {
+              color: #cbcccd;
+              font-size: 16px;
+            }
+          }
+          &[type="submit"] {
+            background-color: #2cb1ba;
+            height: 45px;
+            width: 100%;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            margin-top: 20px;
+            &:hover {
+              color: #2cb1ba;
+              background-color: #fff;
+              border: 1px solid #2cb1ba;
+              cursor: pointer;
+            }
           }
         }
-      }
-      .error {
-        color: #c2175b;
-        font-size: 14px;
+        .error {
+          color: #c2175b;
+          font-size: 14px;
+        }
       }
     }
   }

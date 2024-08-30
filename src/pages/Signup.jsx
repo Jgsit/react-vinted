@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { IoIosClose } from "react-icons/io";
 import axios from "axios";
 
-function Signup() {
+function Signup({ setVisible }) {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -30,9 +31,26 @@ function Signup() {
       setMessage(error.response.data.message);
     }
   };
+
   return (
-    <main>
-      <div className="signup">
+    <div
+      className="modal-root"
+      onClick={() => {
+        setVisible([false, false]);
+      }}
+    >
+      <div
+        className="signup"
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
+      >
+        <IoIosClose
+          className="close"
+          onClick={() => {
+            setVisible([false, false]);
+          }}
+        />
         <form onSubmit={handleSubmit}>
           <label htmlFor="signup">S'inscrire</label>
           <input
@@ -83,7 +101,7 @@ function Signup() {
         </form>
         <a href="/login">Tu as déjà un compte ? Connecte-toi</a>
       </div>
-    </main>
+    </div>
   );
 }
 export default Signup;
