@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
+import defaultAvatar from "../assets/default-avatar.png";
 
 function Card(props) {
   const { offer } = props;
-
   return (
     <div className="card-container">
       {offer.owner && (
@@ -12,7 +12,11 @@ function Card(props) {
             alert("Go to user profile !");
           }}
         >
-          <img src={offer.owner.account.avatar.secure_url} alt="" />
+          {offer.owner.account.avatar ? (
+            <img src={offer.owner.account.avatar.secure_url} alt="" />
+          ) : (
+            <img src={defaultAvatar} alt="" />
+          )}
           <span>{offer.owner.account.username}</span>
         </div>
       )}

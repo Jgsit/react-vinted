@@ -1,5 +1,6 @@
 import OfferInfo from "./OfferInfo";
 import PicturesCarousel from "./PicturesCarousel";
+import defaultAvatar from "../assets/default-avatar.png";
 
 function OfferContent(props) {
   const { data } = props;
@@ -23,7 +24,11 @@ function OfferContent(props) {
             <p className="offer-title">{data.product_name}</p>
             <p className="offer-description">{data.product_description}</p>
             <div className="user">
-              <img src={data.owner.account.avatar.secure_url} alt="" />
+              {data.owner.account.avatar ? (
+                <img src={data.owner.account.avatar.secure_url} alt="" />
+              ) : (
+                <img src={defaultAvatar} alt="" />
+              )}
               <span>{data.owner.account.username}</span>
             </div>
           </div>
