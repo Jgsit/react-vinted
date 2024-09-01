@@ -48,9 +48,6 @@ function Home({ title, priceRange, sort }) {
           </div>
         </div>
       </div>
-      <span>
-        {priceRange[0]} ======== {priceRange[1]}
-      </span>
       <HomeContent data={data} page={page} limit={limit} pageMax={pageMax} />
     </div>
   );
