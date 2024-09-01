@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Cookies from "js-cookie";
-import { Range } from "react-range";
+import { Range, getTrackBackground } from "react-range";
 import { useState } from "react";
 
 function Header(props) {
@@ -14,8 +14,9 @@ function Header(props) {
     setPriceRange,
     setSort,
     priceRange,
+    sort,
   } = props;
-  const [values, setValues] = useState(0);
+  const [values, setValues] = useState([10, 100]);
 
   return (
     <header>
@@ -24,65 +25,105 @@ function Header(props) {
           <img src={logo} alt="Logo Vinted" />
         </Link>
       </div>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Recherche des articles"
-          onChange={(event) => setTitle(event.target.value)}
-        />
-        <Range
-          step={1}
-          min={0}
-          max={100000}
-          values={priceRange}
-          onChange={(values) => setPriceRange(values)}
-          renderTrack={({ props, children }) => (
-            <div
-              {...props}
-              style={{
-                ...props.style,
-                height: "6px",
-                width: "100%",
-                backgroundColor: "#ccc",
+      <div className="search-params">
+        <div className="search-bar">
+          {" "}
+          <input
+            type="text"
+            placeholder="Recherche des articles"
+            onChange={(event) => setTitle(event.target.value)}
+          />
+        </div>
+        <div className="sub-search">
+          <div className="search-sort">
+            <span>
+              Trier par :{" "}
+              {sort === "price-asc" ? "Prix croissant" : "Prix décroissant"}
+            </span>
+            <input
+              type="checkbox"
+              id=""
+              onChange={() =>
+                setSort((prevState) =>
+                  prevState === "price-asc" ? "price-desc" : "price-asc"
+                )
+              }
+            />
+          </div>
+          <div className="range">
+            {" "}
+            <Range
+              step={5}
+              min={10}
+              max={500}
+              values={values}
+              onChange={(values) => setValues(values)}
+              onFinalChange={(values) => {
+                setPriceRange(values);
               }}
-            >
-              {children}
-            </div>
-          )}
-          renderThumb={({ props, isDragged }) => (
-            <div
-              {...props}
-              style={{
-                ...props.style,
-                height: "20px",
-                width: "20px",
-                borderRadius: "50%",
-                backgroundColor: isDragged ? "#548BF4" : "#CCC",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                boxShadow: "0px 2px 6px #AAA",
-              }}
-            >
-              <div
-                style={{
-                  height: "10px",
-                  width: "5px",
-                  backgroundColor: isDragged ? "#548BF4" : "#CCC",
-                }}
-              />
-            </div>
-          )}
-        />
-        <input
-          type="checkbox"
-          id=""
-          onChange={() =>
-            setSort((prevState) =>
-              prevState === "price-asc" ? "price-desc" : "price-asc"
-            )
-          }
-        />
+              renderTrack={({ props, children }) => (
+                <div
+                  style={{
+                    ...props.style,
+                    height: "36px",
+                    display: "flex",
+                    width: "90%",
+                  }}
+                >
+                  <div
+                    ref={props.ref}
+                    style={{
+                      height: "5px",
+                      width: "100%",
+                      borderRadius: "4px",
+                      background: getTrackBackground({
+                        values: values,
+                        colors: ["#ccc", " #2cb1ba", "#ccc"],
+                        min: "10",
+                        max: "500",
+                      }),
+                      alignSelf: "center",
+                    }}
+                  >
+                    {children}
+                  </div>
+                </div>
+              )}
+              renderThumb={({ index, props, isDragged }) => (
+                <div
+                  {...props}
+                  style={{
+                    ...props.style,
+                    height: "15px",
+                    width: "15px",
+                    borderRadius: "50%",
+                    border: isDragged ? "" : "1px solid white",
+                    backgroundColor: "#2cb1ba",
+                    outline: "none",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "-28px",
+                      color: "#fff",
+                      fontSize: "12px",
+                      fontFamily: "Maison Neue",
+                      padding: "4px",
+                      borderRadius: "4px",
+                      backgroundColor: "#2cb1ba",
+                    }}
+                  >
+                    {values[index]}€
+                  </div>
+                </div>
+              )}
+            />
+          </div>
+        </div>
       </div>
       {token ? (
         <div className="connected">

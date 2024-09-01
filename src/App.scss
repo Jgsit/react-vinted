@@ -15,16 +15,35 @@
         cursor: pointer;
       }
     }
-    .search {
-      input {
-        width: 590px;
-        padding-left: 40px;
-        background-color: #f5f6f7;
-        border-radius: 5px;
-        height: 37px;
-        border: none;
-        outline: none;
-        font-size: 16px;
+    .search-params {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      gap: 20px;
+      .search-bar {
+        input {
+          width: 590px;
+          padding-left: 40px;
+          background-color: #f5f6f7;
+          border-radius: 5px;
+          height: 37px;
+          border: none;
+          outline: none;
+          font-size: 16px;
+        }
+      }
+      .sub-search {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        .search-sort {
+          flex: 2;
+        }
+        .range {
+          flex: 3;
+        }
       }
     }
     button {

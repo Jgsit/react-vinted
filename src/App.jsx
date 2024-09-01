@@ -39,6 +39,7 @@ function App() {
         setPriceRange={setPriceRange}
         setSort={setSort}
         priceRange={priceRange}
+        sort={sort}
       />
       <Routes>
         <Route
