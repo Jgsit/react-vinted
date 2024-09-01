@@ -27,7 +27,7 @@ function Signup(props) {
       );
       setToken(response.data.token);
       Cookies.set("token", response.data.token, { expires: 15 });
-      navigate("/");
+      setVisible([false, false]);
     } catch (error) {
       console.error(error);
       error.response.data.error && setMessage(error.response.data.error);

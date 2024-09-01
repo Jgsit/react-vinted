@@ -26,6 +26,7 @@ function Signup({ setVisible }) {
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         formData
       );
+      setVisible([false, false]);
     } catch (error) {
       console.error(error);
       setMessage(error.response.data.message);
