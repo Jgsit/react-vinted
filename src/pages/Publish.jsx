@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 function Publish() {
   const [info, setInfo] = useState({});
   const [file, setFile] = useState("");
@@ -9,6 +10,7 @@ function Publish() {
   const token =
     "ONc1422LYM_1WhrjUHJ79MmVThtBJWVw5csF2i3oLMSfLgTQZn75NSpjmLUwTw_3";
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const key = e.target.name;
     const newInfo = structuredClone(info);
@@ -39,7 +41,9 @@ function Publish() {
           },
         }
       );
-      alert(JSON.stringify(response.data));
+      const id = response.data._id;
+
+      navigate(`/offers/${id}`);
     } catch (error) {
       if (error.response.status === 500) {
         console.log("An error occurred");
