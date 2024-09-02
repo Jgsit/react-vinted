@@ -100,7 +100,9 @@ function Signup({ setVisible }) {
           </div>
           <input type="submit" value="S'inscrire" />
         </form>
-        <a href="/login">Tu as déjà un compte ? Connecte-toi</a>
+        <a onClick={() => setVisible([false, true])}>
+          Tu as déjà un compte ? Connecte-toi
+        </a>
       </div>
     </div>
   );

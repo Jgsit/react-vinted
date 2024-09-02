@@ -28,16 +28,17 @@ function Header(props) {
           <img src={logo} alt="Logo Vinted" />
         </Link>
       </div>
-      {location.pathname === "/" && (
-        <div className="search-params">
-          <div className="search-bar">
-            {" "}
-            <input
-              type="text"
-              placeholder="Recherche des articles"
-              onChange={(event) => setTitle(event.target.value)}
-            />
-          </div>
+
+      <div className="search-params">
+        <div className="search-bar">
+          {" "}
+          <input
+            type="text"
+            placeholder="Recherche des articles"
+            onChange={(event) => setTitle(event.target.value)}
+          />
+        </div>
+        {location.pathname === "/" && (
           <div className="sub-search">
             <div className="search-sort">
               <span>
@@ -128,8 +129,8 @@ function Header(props) {
               />
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
       {token ? (
         <div className="connected">
           <button
