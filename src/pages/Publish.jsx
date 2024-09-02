@@ -11,6 +11,7 @@ function Publish() {
     "ONc1422LYM_1WhrjUHJ79MmVThtBJWVw5csF2i3oLMSfLgTQZn75NSpjmLUwTw_3";
 
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const key = e.target.name;
     const newInfo = structuredClone(info);
@@ -42,7 +43,6 @@ function Publish() {
         }
       );
       const id = response.data._id;
-
       navigate(`/offers/${id}`);
     } catch (error) {
       if (error.response.status === 500) {
@@ -52,6 +52,7 @@ function Publish() {
       }
     }
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="">Vends ton article</label>
