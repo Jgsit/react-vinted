@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import HomeContent from "../components/HomeContent";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-function Home({ title, priceRange, sort }) {
+function Home({ title, priceRange, sort, setVisible }) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,6 +26,8 @@ function Home({ title, priceRange, sort }) {
     fetchData();
   }, [title, priceRange, sort]);
 
+  const navigate = useNavigate();
+
   if (!isLoading) {
     pageMax = Math.ceil(data.offers.length / limit);
   }
@@ -44,7 +47,15 @@ function Home({ title, priceRange, sort }) {
           </svg>
           <div>
             <h1>Prêts à faire du tri dans vos placards ?</h1>
-            <button>Commencer à vendre</button>
+            <button
+              onClick={() => {
+                Cookies.get("token")
+                  ? navigate("/publish")
+                  : setVisible([true, false]);
+              }}
+            >
+              Commencer à vendre
+            </button>
           </div>
         </div>
       </div>

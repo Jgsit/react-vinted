@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Cookies from "js-cookie";
 import { Range, getTrackBackground } from "react-range";
@@ -17,6 +17,8 @@ function Header(props) {
     sort,
   } = props;
   const [values, setValues] = useState([10, 100]);
+
+  const navigate = useNavigate();
 
   return (
     <header>
@@ -159,7 +161,16 @@ function Header(props) {
         </div>
       )}
 
-      <button className="sold">Vends tes articles</button>
+      <button
+        className="sold"
+        onClick={() => {
+          Cookies.get("token")
+            ? navigate("/publish")
+            : setVisible([true, false]);
+        }}
+      >
+        Vends tes articles
+      </button>
     </header>
   );
 }
