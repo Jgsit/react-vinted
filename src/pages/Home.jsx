@@ -9,7 +9,7 @@ function Home({ title, priceRange, sort, setVisible, setFrom }) {
   const [isLoading, setIsLoading] = useState(true);
 
   const location = useLocation();
-  const { from } = location.state;
+  const { from } = location.state || "";
   setFrom(from);
   const searchParams = new URLSearchParams(location.search);
   const limit = searchParams.get("limit") || 10;

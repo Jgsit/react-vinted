@@ -7,9 +7,7 @@ const responsive = {
   },
 };
 
-function PicturesCarousel(props) {
-  const { data } = props;
-
+function PicturesCarousel({ data }) {
   return (
     <Carousel responsive={responsive} draggable={false}>
       {data.map((image, index) => {

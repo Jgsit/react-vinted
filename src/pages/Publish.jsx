@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 function Publish({ setVisible }) {
   const [info, setInfo] = useState({});
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState([]);
 
   const token = Cookies.get("token");
 
@@ -14,19 +14,27 @@ function Publish({ setVisible }) {
     const key = e.target.name;
     const newInfo = structuredClone(info);
     if (e.target.type === "file") {
-      setFile(e.target.files[0]);
+      setFile((prevState) => [...prevState, e.target.files[0]]);
     } else {
       newInfo[key] = e.target.value;
     }
     setInfo(newInfo);
   };
+  const handleDelete = (e) => {
+    const newFile = [...file];
+    newFile.splice(e.target.id, 1);
+    setFile(newFile);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     for (const key in info) {
       formData.append(String(key), String(info[key]));
     }
-    formData.append("picture", file);
+    for (let i = 0; i < file.length; i++) {
+      formData.append("picture", file[i]);
+    }
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
@@ -62,20 +70,28 @@ function Publish({ setVisible }) {
               onChange={handleChange}
               style={{ display: "none" }}
             />
-            {file ? (
-              <div className="picture">
-                <img src={URL.createObjectURL(file)} alt="preview photo" />
-                <span
-                  onClick={() => {
-                    setFile("");
-                  }}
-                >
-                  X
-                </span>
+            {file.length !== 0 && (
+              <div className="pictures">
+                {file.map((picture, index) => {
+                  return (
+                    <div key={index} className="picture">
+                      {picture && (
+                        <>
+                          <img
+                            src={URL.createObjectURL(picture)}
+                            alt="preview photo"
+                          />
+                          <span id={index} onClick={handleDelete}>
+                            X
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
-            ) : (
-              <label htmlFor="picture">+ Ajoute une photo </label>
             )}
+            <label htmlFor="picture">+ Ajoute une photo </label>
           </div>
           <div className="input-section">
             <div className="title">
