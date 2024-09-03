@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Publish({ setVisible }) {
   const [info, setInfo] = useState({});
   const [file, setFile] = useState([]);
+  const [showAdd, setShowAdd] = useState(true);
 
   const token = Cookies.get("token");
 
@@ -28,6 +29,7 @@ function Publish({ setVisible }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowAdd(false);
     const formData = new FormData();
     for (const key in info) {
       formData.append(String(key), String(info[key]));
@@ -38,8 +40,7 @@ function Publish({ setVisible }) {
     }
     try {
       const response = await axios.post(
-        //  "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
-        "http://localhost:3000/publish",
+        "https://site--vinted-backend--qff9cbxq7z2g.code.run/publish",
         formData,
         {
           headers: {
@@ -190,7 +191,7 @@ function Publish({ setVisible }) {
               </div>
             </div>
           </div>
-          <input type="submit" name="" placeholder="Ajouter" />
+          {showAdd && <input type="submit" name="" placeholder="Ajouter" />}
         </form>
       </div>
     </div>

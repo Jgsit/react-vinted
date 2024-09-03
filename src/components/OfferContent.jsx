@@ -4,8 +4,7 @@ import defaultAvatar from "../assets/default-avatar.png";
 import { Link } from "react-router-dom";
 
 function OfferContent(props) {
-  const { data } = props;
-  console.log(data);
+  const { data, id } = props;
 
   return (
     <main>
@@ -37,7 +36,11 @@ function OfferContent(props) {
           </div>
           <Link
             to="/payment"
-            state={{ title: data.product_name, price: data.product_price }}
+            state={{
+              title: data.product_name,
+              price: data.product_price,
+              id: id,
+            }}
           >
             <button>Acheter</button>
           </Link>

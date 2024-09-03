@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Cookies from "js-cookie";
 import { Range, getTrackBackground } from "react-range";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Header(props) {
   const {
@@ -13,7 +13,6 @@ function Header(props) {
     setTitle,
     setPriceRange,
     setSort,
-    priceRange,
     sort,
   } = props;
   const [values, setValues] = useState([10, 100]);

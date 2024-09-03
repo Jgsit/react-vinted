@@ -30,8 +30,7 @@ function Signup({ setVisible, setToken }) {
     formData.append("avatar", avatar);
     try {
       const response = await axios.post(
-        //"https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        "http://localhost:3000/signup",
+        "https://site--vinted-backend--qff9cbxq7z2g.code.run/signup",
         formData
       );
       setToken(response.data.token);

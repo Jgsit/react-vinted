@@ -29,10 +29,13 @@ const CheckoutForm = ({ title, price }) => {
     }
 
     // Demande au backend de créer l'intention de paiement, il nous renvoie le clientSecret
-    const response = await axios.post("http://localhost:3000/payment", {
-      title: title,
-      amount: Number(price).toFixed(2),
-    });
+    const response = await axios.post(
+      "https://site--vinted-backend--qff9cbxq7z2g.code.run/payment",
+      {
+        title: title,
+        amount: Number(price).toFixed(2),
+      }
+    );
 
     const clientSecret = response.data.client_secret;
 

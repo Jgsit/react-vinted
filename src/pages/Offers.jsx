@@ -11,10 +11,7 @@ function Offers() {
 
   const fetchData = async () => {
     const response = await axios
-      .get(
-        // `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-        `http://localhost:3000/offers/${id}`
-      )
+      .get(`https://site--vinted-backend--qff9cbxq7z2g.code.run/offers/${id}`)
       .then(console.log(data));
     setData(response.data);
     setIsLoading(false);
@@ -28,7 +25,7 @@ function Offers() {
     <span>En cours de chargement... </span>
   ) : (
     <div className="body">
-      <OfferContent data={data} />
+      <OfferContent data={data} id={id} />
     </div>
   );
 }
