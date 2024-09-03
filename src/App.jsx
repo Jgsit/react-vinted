@@ -60,7 +60,9 @@ function App() {
         <Route path="/payment" element={<Payment setVisible={setVisible} />} />
       </Routes>
 
-      {visible[0] && <Signup setVisible={setVisible} visible={visible} />}
+      {visible[0] && (
+        <Signup setVisible={setVisible} visible={visible} setToken={setToken} />
+      )}
       {visible[1] && (
         <Login
           token={token}

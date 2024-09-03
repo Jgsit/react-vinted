@@ -7,7 +7,6 @@ function Publish({ setVisible }) {
   const [file, setFile] = useState("");
 
   const token = Cookies.get("token");
-  //  const token =    "ONc1422LYM_1WhrjUHJ79MmVThtBJWVw5csF2i3oLMSfLgTQZn75NSpjmLUwTw_3";
 
   const navigate = useNavigate();
 

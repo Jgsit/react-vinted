@@ -350,12 +350,33 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         width: 275px;
         margin: auto;
         text-align: center;
-        label {
+        h2 {
           font-size: 24px;
           margin: 20px 0;
+        }
+        label {
+          align-self: start;
+          padding-left: 8px;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          img {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid black;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        input[type="file"] {
+          display: none;
         }
         input {
           width: 100%;

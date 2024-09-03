@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import axios from "axios";
+import Cookies from "js-cookie";
 
-function Signup({ setVisible }) {
-  const [formData, setFormData] = useState({
+function Signup({ setVisible, setToken }) {
+  const [info, setInfo] = useState({
     username: "",
     email: "",
     password: "",
     newsletter: false,
   });
+  const [avatar, setAvatar] = useState("");
   const [message, setMessage] = useState("");
 
   const handleChange = (event) => {
@@ -16,16 +18,24 @@ function Signup({ setVisible }) {
     if (name === "newsletter") {
       value = checked;
     }
-    setFormData((prevState) => ({ ...prevState, [name]: value }));
+    setInfo((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const formData = new FormData();
+    for (const key in info) {
+      formData.append(String(key), String(info[key]));
+    }
+    formData.append("avatar", avatar);
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         formData
       );
+      setToken(response.data.token);
+      Cookies.set("token", response.data.token, { expires: 15 });
+
       setVisible([false, false]);
     } catch (error) {
       console.error(error);
@@ -53,7 +63,21 @@ function Signup({ setVisible }) {
           }}
         />
         <form onSubmit={handleSubmit}>
-          <label htmlFor="signup">S'inscrire</label>
+          <h2>S'inscrire</h2>
+          <input
+            type="file"
+            name="avatar"
+            id="avatar"
+            onChange={(e) => {
+              setAvatar(e.target.files[0]);
+            }}
+          />
+          <label htmlFor="avatar">
+            Ajoute un avatar :{" "}
+            {avatar && (
+              <img src={URL.createObjectURL(avatar)} alt="user avatar" />
+            )}
+          </label>
           <input
             type="text"
             name="username"
