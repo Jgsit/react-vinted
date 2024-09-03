@@ -482,7 +482,6 @@
       }
     }
   }
-
   .publish {
     background-color: #ebedee;
     .container {
@@ -585,6 +584,20 @@
             border: 1px solid #09b1ba;
           }
         }
+      }
+    }
+  }
+  .payment {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      button {
+        align-self: flex-end;
+        width: 50px;
       }
     }
   }

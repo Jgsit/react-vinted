@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 // Composants
 import Header from "./components/Header";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 function App() {
   const [visible, setVisible] = useState([false, false]);
@@ -56,6 +57,7 @@ function App() {
         />
         <Route path="/offers/:id" element={<Offers />} />
         <Route path="/publish" element={<Publish setVisible={setVisible} />} />
+        <Route path="/payment" element={<Payment setVisible={setVisible} />} />
       </Routes>
 
       {visible[0] && <Signup setVisible={setVisible} visible={visible} />}

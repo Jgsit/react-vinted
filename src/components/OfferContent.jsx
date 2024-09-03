@@ -1,6 +1,7 @@
 import OfferInfo from "./OfferInfo";
 import PicturesCarousel from "./PicturesCarousel";
 import defaultAvatar from "../assets/default-avatar.png";
+import { Link } from "react-router-dom";
 
 function OfferContent(props) {
   const { data } = props;
@@ -32,7 +33,12 @@ function OfferContent(props) {
               <span>{data.owner.account.username}</span>
             </div>
           </div>
-          <button>Acheter</button>
+          <Link
+            to="/payment"
+            state={{ title: data.product_name, price: data.product_price }}
+          >
+            <button>Acheter</button>
+          </Link>
         </div>
       </div>
     </main>
