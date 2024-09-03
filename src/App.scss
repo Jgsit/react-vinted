@@ -588,16 +588,66 @@
     }
   }
   .payment {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    form {
+    background-color: #ebedee;
+    min-height: calc(100vh - 57px);
+    .container {
+      width: 1280px;
+      min-height: calc(100vh - 57px);
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      button {
-        align-self: flex-end;
-        width: 50px;
+      justify-content: center;
+      align-items: center;
+      .payment-box {
+        background-color: #fff;
+        padding: 50px 30px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h2 {
+          font-size: 14px;
+          line-height: 18px;
+          color: #999;
+        }
+        ul {
+          border-bottom: solid 1px gray;
+          li {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+          }
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          button {
+            align-self: flex-end;
+            width: 50px;
+          }
+        }
+        p {
+          margin-bottom: 10px;
+          span {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    .done {
+      min-height: calc(100vh - 57px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .box {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #09b1ba;
+        li {
+          margin: 10px;
+        }
       }
     }
   }

@@ -22,11 +22,9 @@ function Payment({ setVisible }) {
   };
 
   return token ? (
-    <div className="payment">
-      <Elements stripe={stripePromise} options={options}>
-        <CheckoutForm title={title} price={price} />
-      </Elements>
-    </div>
+    <Elements stripe={stripePromise} options={options}>
+      <CheckoutForm title={title} price={(price * 13) / 10} />
+    </Elements>
   ) : (
     (setVisible([false, true]), navigate("/"))
   );

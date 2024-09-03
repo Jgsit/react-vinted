@@ -73,16 +73,52 @@ const CheckoutForm = ({ title, price }) => {
   }, [completed]);
 
   return completed ? (
-    <p>Paiement effectué</p>
+    <div className="payment">
+      <div className="done">
+        <ul className="box">
+          <li>Paimenet effectué</li>
+          <li>Redirection ...</li>
+        </ul>
+      </div>
+    </div>
   ) : (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button type="submit" disabled={!stripe || !elements || isLoading}>
-        Pay
-      </button>
-      {/* Éventuel message d'erreur */}
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
+    <div className="payment">
+      <div className="container">
+        <div className="payment-box">
+          <h2>Résumé de la commande</h2>
+          <ul className="detail">
+            <li>
+              Commande <span>{price} €</span>
+            </li>
+            <li>
+              Frais de protection acheteurs <span>{price / 10} €</span>
+            </li>
+            <li>
+              Frais de port <span>{price / 5} €</span>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              Total<span>{(price * 13) / 10} €</span>{" "}
+            </li>
+            <p>
+              Il ne vous reste plus qu'une étape pour vous offrir{" "}
+              <span>{title}.</span> Vous allez payer{" "}
+              <span>{(price * 13) / 10} €</span> (frais de protection et frais
+              de port inclus).
+            </p>
+          </ul>
+          <form onSubmit={handleSubmit}>
+            <PaymentElement />
+            <button type="submit" disabled={!stripe || !elements || isLoading}>
+              Pay
+            </button>
+            {/* Éventuel message d'erreur */}
+            {errorMessage && <div>{errorMessage}</div>}
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
