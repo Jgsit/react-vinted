@@ -4,11 +4,13 @@ import Cookies from "js-cookie";
 import HomeContent from "../components/HomeContent";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function Home({ title, priceRange, sort, setVisible }) {
+function Home({ title, priceRange, sort, setVisible, setFrom }) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const location = useLocation();
+  const { from } = location.state;
+  setFrom(from);
   const searchParams = new URLSearchParams(location.search);
   const limit = searchParams.get("limit") || 10;
   const page = searchParams.get("page") || 1;

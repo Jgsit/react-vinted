@@ -1,6 +1,11 @@
 import "./App.scss";
 // Je renomme BrowserRouter en Router
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
@@ -21,6 +26,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [sort, setSort] = useState("price-asc");
+  const [from, setFrom] = useState("");
 
   useEffect(() => {
     if (visible[0] || visible[1]) {
@@ -52,6 +58,7 @@ function App() {
               priceRange={priceRange}
               sort={sort}
               setVisible={setVisible}
+              setFrom={setFrom}
             />
           }
         />
@@ -69,6 +76,7 @@ function App() {
           setToken={setToken}
           setVisible={setVisible}
           visible={visible[1]}
+          from={from}
         />
       )}
     </Router>

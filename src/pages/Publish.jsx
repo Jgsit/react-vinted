@@ -29,7 +29,7 @@ function Publish({ setVisible }) {
     formData.append("picture", file);
     try {
       const response = await axios.post(
-        "http://localhost:3000/offer/publish",
+        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
         formData,
         {
           headers: {
@@ -177,7 +177,7 @@ function Publish({ setVisible }) {
       </div>
     </div>
   ) : (
-    (setVisible([false, true]), navigate("/"))
+    (setVisible([false, true]), navigate("/", { state: { from: "publish" } }))
   );
 }
 

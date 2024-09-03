@@ -4,8 +4,8 @@ import { IoIosClose } from "react-icons/io";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-function Signup(props) {
-  const { token, setToken, setVisible } = props;
+function Login(props) {
+  const { token, setToken, setVisible, from } = props;
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -28,6 +28,9 @@ function Signup(props) {
       setToken(response.data.token);
       Cookies.set("token", response.data.token, { expires: 15 });
       setVisible([false, false]);
+      if (from === "publish") {
+        navigate("/publish");
+      }
     } catch (error) {
       console.error(error);
       error.response.data.error && setMessage(error.response.data.error);
@@ -80,4 +83,4 @@ function Signup(props) {
     </div>
   );
 }
-export default Signup;
+export default Login;
