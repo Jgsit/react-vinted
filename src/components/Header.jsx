@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Cookies from "js-cookie";
 import { Range, getTrackBackground } from "react-range";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header(props) {
   const {
@@ -168,9 +168,7 @@ function Header(props) {
       <button
         className="sold"
         onClick={() => {
-          Cookies.get("token")
-            ? navigate("/publish")
-            : setVisible([true, false]);
+          navigate("/publish");
         }}
       >
         Vends tes articles

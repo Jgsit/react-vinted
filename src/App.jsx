@@ -55,7 +55,7 @@ function App() {
           }
         />
         <Route path="/offers/:id" element={<Offers />} />
-        <Route path="/publish" element={<Publish />} />
+        <Route path="/publish" element={<Publish setVisible={setVisible} />} />
       </Routes>
 
       {visible[0] && <Signup setVisible={setVisible} visible={visible} />}

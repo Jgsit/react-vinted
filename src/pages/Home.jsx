@@ -23,8 +23,15 @@ function Home({ title, priceRange, sort, setVisible }) {
   };
 
   useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      fetchData();
+    }, 1000);
+    return () => clearTimeout(delayDebounceFn);
+  }, [title]);
+
+  useEffect(() => {
     fetchData();
-  }, [title, priceRange, sort]);
+  }, [priceRange, sort]);
 
   const navigate = useNavigate();
 
