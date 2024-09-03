@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -32,12 +32,14 @@ function Publish({ setVisible }) {
     for (const key in info) {
       formData.append(String(key), String(info[key]));
     }
+    formData.append("picture", file[0]);
     for (let i = 0; i < file.length; i++) {
-      formData.append("picture", file[i]);
+      formData.append("pictures", file[i]);
     }
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        //  "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        "http://localhost:3000/publish",
         formData,
         {
           headers: {

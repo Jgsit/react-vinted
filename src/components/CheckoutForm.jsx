@@ -31,7 +31,7 @@ const CheckoutForm = ({ title, price }) => {
     // Demande au backend de créer l'intention de paiement, il nous renvoie le clientSecret
     const response = await axios.post("http://localhost:3000/payment", {
       title: title,
-      amount: price,
+      amount: Number(price).toFixed(2),
     });
 
     const clientSecret = response.data.client_secret;
@@ -88,24 +88,25 @@ const CheckoutForm = ({ title, price }) => {
           <h2>Résumé de la commande</h2>
           <ul className="detail">
             <li>
-              Commande <span>{price} €</span>
+              Commande <span>{price.toFixed(2)} €</span>
             </li>
             <li>
-              Frais de protection acheteurs <span>{price / 10} €</span>
+              Frais de protection acheteurs{" "}
+              <span>{(price / 10).toFixed(2)} €</span>
             </li>
             <li>
-              Frais de port <span>{price / 5} €</span>
+              Frais de port <span>{(price / 5).toFixed(2)} €</span>
             </li>
           </ul>
           <ul>
             <li>
-              Total<span>{(price * 13) / 10} €</span>{" "}
+              Total<span>{((price * 13) / 10).toFixed(2)} €</span>{" "}
             </li>
             <p>
               Il ne vous reste plus qu'une étape pour vous offrir{" "}
               <span>{title}.</span> Vous allez payer{" "}
-              <span>{(price * 13) / 10} €</span> (frais de protection et frais
-              de port inclus).
+              <span>{((price * 13) / 10).toFixed(2)} €</span> (frais de
+              protection et frais de port inclus).
             </p>
           </ul>
           <form onSubmit={handleSubmit}>

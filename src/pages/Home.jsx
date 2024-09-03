@@ -18,7 +18,8 @@ function Home({ title, priceRange, sort, setVisible, setFrom }) {
 
   const fetchData = async () => {
     const response = await axios.get(
-      `https://lereacteur-vinted-api.herokuapp.com/v2/offers?title=${title}&priceMin=${priceRange[0]}&priceMax=${priceRange[1]}&sort=${sort}`
+      // `https://lereacteur-vinted-api.herokuapp.com/v2/offers?title=${title}&priceMin=${priceRange[0]}&priceMax=${priceRange[1]}&sort=${sort}`
+      `http://localhost:3000/offers?page=${page}&limit=${limit}&title=${title}&priceMin=${priceRange[0]}&priceMax=${priceRange[1]}&sort=${sort}`
     );
     setData(response.data);
     setIsLoading(false);

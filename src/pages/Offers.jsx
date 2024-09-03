@@ -10,9 +10,12 @@ function Offers() {
   let { id } = useParams();
 
   const fetchData = async () => {
-    const response = await axios.get(
-      `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-    );
+    const response = await axios
+      .get(
+        // `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+        `http://localhost:3000/offers/${id}`
+      )
+      .then(console.log(data));
     setData(response.data);
     setIsLoading(false);
   };

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 function OfferContent(props) {
   const { data } = props;
+  console.log(data);
+
   return (
     <main>
       <div className="container">
