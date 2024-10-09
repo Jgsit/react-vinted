@@ -22,7 +22,7 @@ function Login(props) {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "https://site--vinted-backend--qff9cbxq7z2g.code.run/login",
+        `${import.meta.env.VITE_API_URL}/login`,
         formData
       );
       setToken(response.data.token);

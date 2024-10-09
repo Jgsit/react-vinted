@@ -30,7 +30,7 @@ function Signup({ setVisible, setToken }) {
     formData.append("avatar", avatar);
     try {
       const response = await axios.post(
-        "https://site--vinted-backend--qff9cbxq7z2g.code.run/signup",
+        `${import.meta.env.VITE_API_URL}/signup`,
         formData
       );
       setToken(response.data.token);

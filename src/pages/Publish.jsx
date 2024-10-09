@@ -40,7 +40,7 @@ function Publish({ setVisible }) {
     }
     try {
       const response = await axios.post(
-        "https://site--vinted-backend--qff9cbxq7z2g.code.run/publish",
+        `${import.meta.env.VITE_API_URL}/publish`,
         formData,
         {
           headers: {

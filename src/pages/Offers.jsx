@@ -11,7 +11,7 @@ function Offers() {
 
   const fetchData = async () => {
     const response = await axios
-      .get(`https://site--vinted-backend--qff9cbxq7z2g.code.run/offers/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/offers/${id}`)
       .then(console.log(data));
     setData(response.data);
     setIsLoading(false);
